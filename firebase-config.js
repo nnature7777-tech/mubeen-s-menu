@@ -2,16 +2,15 @@
 // MUBEEN'S - GOOGLE FIREBASE REALTIME DATABASE CONFIGURATION
 // Creator: n.nature7777@gmail.com
 // =========================================================================
-// Replace the placeholder values below with your actual Firebase Project keys.
 
 export const firebaseConfig = {
-  apiKey: "YOUR_API_KEY_HERE",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  databaseURL: "https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyCW67mUNPrTFKtrNVvhmnSdn_t61l4s67U",
+  authDomain: "mubeens-restaurant.firebaseapp.com",
+  databaseURL: "https://mubeens-restaurant-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "mubeens-restaurant",
+  storageBucket: "mubeens-restaurant.firebasestorage.app",
+  messagingSenderId: "573113494999",
+  appId: "1:573113494999:web:1d0bb3e6ee14836b2aaf92"
 };
 
 export function isFirebaseConfigured() {
