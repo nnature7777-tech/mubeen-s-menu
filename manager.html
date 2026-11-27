@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Mubeen's — Manager's Website</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- TOP EDITORIAL MANAGER BAR -->
+  <header class="top-app-bar">
+    <div class="top-nav-row">
+      <div class="table-status-chip">
+        <span>🛡️</span>
+        <span>Manager</span>
+      </div>
+
+      <div class="brand-center">
+        <div class="brand-emblem">❧ ♛ ❧</div>
+        <h1 class="brand-name-serif">MUBEEN'S</h1>
+        <div class="brand-sub-caps">• UNIFIED MANAGER &amp; KITCHEN CONSOLE •</div>
+      </div>
+
+      <div class="table-status-chip" style="background:var(--bg-mahogany);">
+        <span id="mgrSyncText">Live</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- PASSWORD LOGIN GATE (Password: admin_3214) -->
+  <main class="container" id="loginGate">
+    <div class="editorial-panel" style="max-width:420px; margin:34px auto; text-align:center;">
+      <h2 style="font-family:'Cinzel',serif; color:var(--crimson-royal); margin-bottom:6px;">
+        Manager Login
+      </h2>
+      <p style="font-size:0.85rem; color:var(--ink-body); margin-bottom:16px;">
+        Enter password to manage live table orders, waiter calls, menu photos &amp; daily sales.
+      </p>
+      <form id="loginForm">
+        <input
+          type="password"
+          id="managerPwdInput"
+          class="input-editorial"
+          placeholder="Enter Password"
+          style="text-align:center; font-size:1.05rem; margin-bottom:12px;"
+          required
+        />
+        <p id="loginErr" class="hidden" style="color:#B92B27; font-size:0.82rem; margin-bottom:10px; font-weight:700;">
+          Incorrect password. Please try again.
+        </p>
+        <button type="submit" class="glass-btn" style="width:100%; padding:13px;">
+          Unlock Manager's Website
+        </button>
+      </form>
+    </div>
+
+    <footer class="creator-footer">
+      Mubeen's Management Platform • Created by <strong>n.nature7777@gmail.com</strong>
+    </footer>
+  </main>
+
+  <!-- UNIFIED MANAGER DASHBOARD -->
+  <main class="container hidden" id="managerDashboard">
+
+    <!-- TODAY'S SALES / DONE / PENDING KPIs -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value" id="statTodaySale">₹0</div>
+        <div class="stat-label">Today's Sale</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statOrdersDone">0</div>
+        <div class="stat-label">Orders Done</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statOrdersPending">0</div>
+        <div class="stat-label">Orders Pending</div>
+      </div>
+    </section>
+
+    <!-- ACTIVE WAITER CALLS -->
+    <section id="waiterCallsPanel" class="editorial-panel hidden" style="border:2px solid var(--crimson-royal); background:#FFF3E4;">
+      <h3 style="font-family:'Cinzel',serif; color:var(--crimson-royal); margin-bottom:8px;">
+        🔔 Active Waiter Calls
+      </h3>
+      <div id="waiterCallsList"></div>
+    </section>
+
+    <!-- TAB 1: LIVE ORDERS & 4-STAGE CONTROLS -->
+    <section id="mgrViewOrders">
+      <div class="sec-row-header">
+        <h2 class="sec-row-title">Live Table Orders</h2>
+        <button id="enableAudioBtn" class="glass-btn glass-btn-sm glass-btn-gold">🔊 Test Chime</button>
+      </div>
+      <div id="mgrOrdersList"></div>
+    </section>
+
+    <!-- TAB 2: EDIT MENU FREELY (WITH PHOTO URLS) -->
+    <section id="mgrViewMenu" class="hidden">
+      <div class="sec-row-header">
+        <h2 class="sec-row-title">Edit Menu &amp; Photos</h2>
+        <button id="resetMenuBtn" class="glass-btn glass-btn-sm glass-btn-outline">Restore Original 27 Dishes</button>
+      </div>
+
+      <div class="editorial-panel">
+        <h3 id="menuFormTitle" style="font-family:'Cinzel',serif; color:var(--crimson-royal); margin-bottom:10px;">
+          + Add / Update Dish
+        </h3>
+        <form id="dishForm" style="display:grid; gap:10px;">
+          <input type="hidden" id="editDishId" />
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <input type="text" id="dishNameInput" class="input-editorial" placeholder="Dish Name" required />
+            <select id="dishCatInput" class="input-editorial">
+              <option value="Nehari & Paya">Nehari &amp; Paya</option>
+              <option value="Kababs & Tikka">Kababs &amp; Tikka</option>
+              <option value="Biryani, Korma & Handi">Biryani, Korma &amp; Handi</option>
+              <option value="Breads, Dessert & Drinks">Breads, Dessert &amp; Drinks</option>
+            </select>
+          </div>
+          <input type="text" id="dishSubInput" class="input-editorial" placeholder="Short appetizing description" />
+
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px;">
+            <input type="number" id="dishHalfInput" class="input-editorial" placeholder="Half Price (₹)" />
+            <input type="number" id="dishFullInput" class="input-editorial" placeholder="Full Price (₹)" />
+            <input type="number" id="dishSingleInput" class="input-editorial" placeholder="Single Pc (₹)" />
+          </div>
+
+          <input type="url" id="dishImgInput" class="input-editorial" placeholder="Dish Photo URL (https://...)" />
+
+          <div style="display:flex; gap:10px;">
+            <button type="submit" class="glass-btn" style="flex:1;">Save Dish to Live Menu</button>
+            <button type="button" id="cancelEditBtn" class="glass-btn glass-btn-outline hidden">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="mgrMenuList"></div>
+    </section>
+
+    <!-- TAB 3: DAILY TABLE PIN & 15 PRINTABLE QR CODES -->
+    <section id="mgrViewSettings" class="hidden">
+      <div class="sec-row-header">
+        <h2 class="sec-row-title">Daily PIN &amp; 15 Table QRs</h2>
+      </div>
+
+      <div class="editorial-panel">
+        <h3 style="font-family:'Cinzel',serif; color:var(--crimson-royal); margin-bottom:6px;">
+          🔑 Today's Table PIN (Tent Card Lock)
+        </h3>
+        <p style="font-size:0.84rem; color:var(--ink-body); margin-bottom:12px;">
+          Display this PIN on the small tent cards/boards on all 15 tables. Customers must enter it right before pressing <strong>Confirm Order</strong>.
+        </p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <input
+            type="text"
+            id="mgrDailyPinInput"
+            maxlength="6"
+            class="input-editorial"
+            style="max-width:170px; text-align:center; font-size:1.3rem; font-weight:800; letter-spacing:4px;"
+          />
+          <button id="savePinBtn" class="glass-btn">Update Daily PIN</button>
+          <button id="randomPinBtn" class="glass-btn glass-btn-gold">Generate Random PIN</button>
+        </div>
+      </div>
+
+      <div class="editorial-panel">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
+          <div>
+            <h3 style="font-family:'Cinzel',serif; color:var(--crimson-royal);">
+              📱 Auto-Locked Table QR Codes (Tables 1–15)
+            </h3>
+            <p style="font-size:0.8rem; color:var(--ink-muted);">
+              Each QR links to <code>index.html?table=X</code> so customers cannot choose the wrong table.
+            </p>
+          </div>
+          <button onclick="window.print()" class="glass-btn glass-btn-sm glass-btn-gold">🖨️ Print All 15 QRs</button>
+        </div>
+        <div class="qr-grid" id="qrCodesGrid"></div>
+      </div>
+    </section>
+
+    <!-- CREATOR CREDIT FOOTER -->
+    <footer class="creator-footer">
+      Mubeen's Unified Manager Platform • Created by <strong>n.nature7777@gmail.com</strong>
+    </footer>
+  </main>
+
+  <!-- INSTANT (~1 SEC) POP-UP NOTIFICATION MODAL -->
+  <div class="alert-overlay" id="instantAlertOverlay">
+    <div class="alert-modal">
+      <div style="font-size:2.4rem; margin-bottom:6px;" id="alertEmoji">🔔</div>
+      <h2 style="font-family:'Cinzel',serif; color:var(--brass-bright); font-size:1.45rem;" id="alertTitle">
+        New Alert!
+      </h2>
+      <p style="font-size:1.15rem; font-weight:800; color:#FFF; margin:8px 0;" id="alertTableText">
+        Table #1
+      </p>
+      <p style="font-size:0.88rem; color:#F3DFBA; margin-bottom:18px;" id="alertDetailText"></p>
+      <button id="dismissAlertBtn" class="glass-btn glass-btn-gold" style="width:100%; padding:13px; font-size:1rem;">
+        Got It — View Now
+      </button>
+    </div>
+  </div>
+
+  <!-- iOS 28 LIQUID GLASS FLOATING BOTTOM DOCK -->
+  <nav class="ios28-dock-wrap hidden" id="mgrBottomDock" aria-label="Manager Navigation">
+    <div class="ios28-dock">
+      <button class="dock-tab active" data-mgrtab="mgrViewOrders">
+        <span class="dock-badge hidden" id="mgrPendingBadge">0</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <span>Orders</span>
+      </button>
+
+      <button class="dock-tab center-pill" data-mgrtab="mgrViewMenu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        <span>Edit Menu</span>
+      </button>
+
+      <button class="dock-tab" data-mgrtab="mgrViewSettings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <span>PIN &amp; QRs</span>
+      </button>
+
+      <button class="dock-tab waiter-pill" id="mgrLogoutBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        <span>Lock</span>
+      </button>
+    </div>
+  </nav>
+
+  <script type="module" src="manager-app.js"></script>
+</body>
+</html>
